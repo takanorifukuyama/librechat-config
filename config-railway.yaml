@@ -8,6 +8,44 @@ registration:
 
 endpoints:
   custom:
+    # groq
+    - name: "groq"
+      apiKey: "${GROQ_API_KEY}"
+      baseURL: "https://api.groq.com/openai/v1/"
+      models:
+        default: [
+          "llama-3.1-70b-versatile",
+          "llama2-70b-4096",
+          "llama3-70b-8192",
+          "llama3-8b-8192",
+          "mixtral-8x7b-32768",
+          "gemma-7b-it",
+          ]
+        fetch: false
+      titleConvo: true
+      titleModel: "mixtral-8x7b-32768"
+      modelDisplayLabel: "groq"
+
+    - name: "Perplexity"
+      apiKey: "${PERPLEXITY_API_KEY}"
+      baseURL: "https://api.perplexity.ai/"
+      models:
+        default: [
+          "mistral-7b-instruct",
+          "sonar-small-chat",
+          "sonar-small-online",
+          "sonar-medium-chat",
+          "sonar-medium-online"
+          ]
+        fetch: false # fetching list of models is not supported
+      titleConvo: true
+      titleModel: "sonar-medium-chat"
+      summarize: false
+      summaryModel: "sonar-medium-chat"
+      forcePrompt: false
+      dropParams: ["stop", "frequency_penalty"]
+      modelDisplayLabel: "Perplexity"
+      
     # Anyscale
     - name: "Anyscale"
       apiKey: "${ANYSCALE_API_KEY}"
@@ -391,23 +429,6 @@ endpoints:
       forcePrompt: false
       modelDisplayLabel: "Fireworks"
       dropParams: ["user"]
-     
-    # groq
-    - name: "groq"
-      apiKey: "${GROQ_API_KEY}"
-      baseURL: "https://api.groq.com/openai/v1/"
-      models:
-        default: [
-          "llama2-70b-4096",
-          "llama3-70b-8192",
-          "llama3-8b-8192",
-          "mixtral-8x7b-32768",
-          "gemma-7b-it",
-          ]
-        fetch: false
-      titleConvo: true
-      titleModel: "mixtral-8x7b-32768"
-      modelDisplayLabel: "groq"
       
     # Mistral AI API
     - name: "Mistral"
@@ -645,26 +666,6 @@ endpoints:
     #   dropParams: ["stop"]
     #   modelDisplayLabel: "Perplexity"
     #   iconURL: "https://raw.githubusercontent.com/fuegovic/lc-config-yaml/main/icons/perplexityai.png"
-
-    - name: "Perplexity"
-      apiKey: "${PERPLEXITY_API_KEY}"
-      baseURL: "https://api.perplexity.ai/"
-      models:
-        default: [
-          "mistral-7b-instruct",
-          "sonar-small-chat",
-          "sonar-small-online",
-          "sonar-medium-chat",
-          "sonar-medium-online"
-          ]
-        fetch: false # fetching list of models is not supported
-      titleConvo: true
-      titleModel: "sonar-medium-chat"
-      summarize: false
-      summaryModel: "sonar-medium-chat"
-      forcePrompt: false
-      dropParams: ["stop", "frequency_penalty"]
-      modelDisplayLabel: "Perplexity"
 
     # ShuttleAI API
     - name: "ShuttleAI"
